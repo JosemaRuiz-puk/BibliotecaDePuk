@@ -92,8 +92,8 @@ public class Libro {
                 + "\nAutor: " + autor
                 + "\nISBN: " + isbn
                 + "\nAño de publicación: " + anioPublicacion
-                + "\nFormato(original)" + fotocopiado
-                + "\nFormato(soporte) " + digital;
+                + "\nFormato(original): " + fotocopiado
+                + "\nFormato(soporte): " + digital;
     }
 
 }

@@ -1,6 +1,8 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
+ * to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java
+ * to edit this template
  */
 package puk.modelo;
 
@@ -19,8 +21,8 @@ public class GestionBiblioteca {
         this.libros = new ArrayList<>();
     }
 
-    public String añadirLibro(Libro l) {
-        libros.add(l);
+    public String añadirLibro(Libro libro) {
+        libros.add(libro);
         return "Libro añadido al registro";
     }
 
@@ -44,8 +46,20 @@ public class GestionBiblioteca {
     }
 
     public Libro buscarLibroPorTitulo(String titulo) {
+
         for (Libro libro : libros) {
             if (libro.getTitulo().equalsIgnoreCase(titulo)) {
+                return libro;
+            }
+        }
+
+        return null;
+    }
+
+    public Libro buscarLibroPorId(int id) {
+
+        for (Libro libro : libros) {
+            if (libro.getId() == id) {
                 return libro;
             }
         }
@@ -56,19 +70,21 @@ public class GestionBiblioteca {
     public String eliminarLibro(int id) {
 
         Iterator<Libro> it = libros.iterator();
+
         while (it.hasNext()) {
-            Libro l = it.next();
-            if (l.getId() == id) {
+            Libro libro = it.next();
+
+            if (libro.getId() == id) {
                 it.remove();
                 return "Libro eliminado del registro";
             }
-
         }
-        return "Libro no encontrado en el registro";
 
+        return "Libro no encontrado en el registro";
     }
 
     public String mostrarRegistro() {
+
         if (libros.isEmpty()) {
             return "No hay registros";
         }
@@ -91,4 +107,43 @@ public class GestionBiblioteca {
         return resultado.toString();
     }
 
+    public int getTotalLibros() {
+        return libros.size();
+    }
+
+    public ArrayList<Libro> getLibros() {
+        return new ArrayList<>(libros);
+    }
+
+    public String cambiarAFotocopiado(int id) {
+
+        Libro libro = buscarLibroPorId(id);
+
+        if (libro == null) {
+            return "El libro no está en el registro";
+        }
+
+        if (!libro.isOriginal()) {
+            return "El libro ya ha sido marcado como fotocopiado";
+        }
+
+        libro.setOriginal(false);
+        return "El libro ha sido establecido como fotocopia";
+    }
+
+    public String cambiarADigital(int id) {
+
+        Libro libro = buscarLibroPorId(id);
+
+        if (libro == null) {
+            return "El libro no está en el registro";
+        }
+
+        if (!libro.isFisico()) {
+            return "El libro ya ha sido marcado como digital";
+        }
+
+        libro.setFisico(false);
+        return "El libro ha sido establecido como digital";
+    }
 }

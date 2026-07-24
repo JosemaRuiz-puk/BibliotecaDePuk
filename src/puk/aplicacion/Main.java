@@ -18,7 +18,7 @@ public class Main {
         GestionBiblioteca biblioteca = persistencia.cargar();
 
         java.awt.EventQueue.invokeLater(() -> {
-            new VentanaPrincipal(biblioteca).setVisible(true);
+            new VentanaPrincipal(biblioteca,persistencia).setVisible(true);
         });
 
     }

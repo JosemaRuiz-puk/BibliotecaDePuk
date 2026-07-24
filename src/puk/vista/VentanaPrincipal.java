@@ -7,6 +7,7 @@ package puk.vista;
 import puk.modelo.GestionBiblioteca;
 import javax.swing.table.DefaultTableModel;
 import puk.modelo.Libro;
+import puk.persistencia.PersistenciaBiblioteca;
 
 /**
  *
@@ -18,19 +19,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      * Creates new form ventanaPrincipal
      */
     private GestionBiblioteca biblioteca;
+    private PersistenciaBiblioteca persistencia;
 
-    public VentanaPrincipal(GestionBiblioteca biblioteca) {
+    public VentanaPrincipal(
+            GestionBiblioteca biblioteca,
+            PersistenciaBiblioteca persistencia) {
+
         initComponents();
+
         this.biblioteca = biblioteca;
+        this.persistencia = persistencia;
 
         bloquearEdicionTabla();
         cargarTabla();
         ajustarColumnas();
 
-        setLocationRelativeTo(null);;
+        setLocationRelativeTo(null);
     }
 
-    private void cargarTabla() {
+    public void cargarTabla() {
 
         DefaultTableModel modelo
                 = (DefaultTableModel) tablaLibros.getModel();
@@ -178,7 +185,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNuevoLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoLibroActionPerformed
-        VentanaNuevoLibro ventana = new VentanaNuevoLibro(biblioteca);
+        VentanaNuevoLibro ventana
+                = new VentanaNuevoLibro(
+                        biblioteca,
+                        persistencia,
+                        this
+                );
+
         ventana.setVisible(true);
     }//GEN-LAST:event_btnNuevoLibroActionPerformed
 

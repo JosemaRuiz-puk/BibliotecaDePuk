@@ -4,10 +4,11 @@
  */
 package puk.vista;
 
+import javax.swing.JOptionPane;
 import puk.modelo.GestionBiblioteca;
 import puk.modelo.Libro;
 import puk.persistencia.PersistenciaBiblioteca;
-
+import puk.util.ValidadorISBN;
 
 public class VentanaNuevoLibro extends javax.swing.JFrame {
 
@@ -16,20 +17,20 @@ public class VentanaNuevoLibro extends javax.swing.JFrame {
     private VentanaPrincipal ventanaPrincipal;
 
     public VentanaNuevoLibro(
-        GestionBiblioteca biblioteca,
-        PersistenciaBiblioteca persistencia,
-        VentanaPrincipal ventanaPrincipal) {
+            GestionBiblioteca biblioteca,
+            PersistenciaBiblioteca persistencia,
+            VentanaPrincipal ventanaPrincipal) {
 
-    initComponents();
+        initComponents();
 
-    this.biblioteca = biblioteca;
-    this.persistencia = persistencia;
-    this.ventanaPrincipal = ventanaPrincipal;
+        this.biblioteca = biblioteca;
+        this.persistencia = persistencia;
+        this.ventanaPrincipal = ventanaPrincipal;
 
-    setLocationRelativeTo(null);
-    setDefaultCloseOperation(
-            javax.swing.WindowConstants.DISPOSE_ON_CLOSE
-    );
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(
+                javax.swing.WindowConstants.DISPOSE_ON_CLOSE
+        );
 
     }
 
@@ -226,15 +227,102 @@ public class VentanaNuevoLibro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        String titulo = txtTitulo.getText();
-        String autor = txtAutor.getText();
-        String isbn = txtIsbn.getText();
-        int anio = Integer.parseInt(txtAnio.getText());
 
-        boolean original = cmbOriginal.getSelectedItem().equals("Original");
-        boolean fisico = cmbFisico.getSelectedItem().equals("Físico");
+        String titulo = txtTitulo.getText().trim();
+        String autor = txtAutor.getText().trim();
 
-        Libro libro = new Libro(titulo, autor, isbn, anio);
+        String isbn = txtIsbn.getText().trim();
+
+        if (!ValidadorISBN.esValido(isbn)) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "El ISBN no es válido.",
+                    "ISBN incorrecto",
+                    JOptionPane.WARNING_MESSAGE
+            );
+
+            return;
+        }
+
+        isbn = ValidadorISBN.limpiar(isbn);
+        String textoAnio = txtAnio.getText().trim();
+
+        // Comprobar campos vacíos
+        if (titulo.isEmpty()
+                || autor.isEmpty()
+                || isbn.isEmpty()
+                || textoAnio.isEmpty()) {
+
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Debes completar todos los campos.",
+                    "Campos incompletos",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+
+            return;
+        }
+
+        // Evitar que se rompa el formato del fichero
+        if (titulo.contains(";")
+                || autor.contains(";")
+                || isbn.contains(";")) {
+
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "No puedes utilizar el carácter ; en los campos.",
+                    "Carácter no permitido",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+
+            return;
+        }
+
+        // Comprobar que el año sea numérico
+        int anio;
+
+        try {
+            anio = Integer.parseInt(textoAnio);
+        } catch (NumberFormatException e) {
+
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "El año de publicación debe ser un número entero.",
+                    "Año incorrecto",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+
+            return;
+        }
+
+        // Comprobar que el año sea razonable
+        int anioActual = java.time.Year.now().getValue();
+
+        if (anio < 1450 || anio > anioActual + 1) {
+
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Introduce un año de publicación válido.",
+                    "Año incorrecto",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+
+            return;
+        }
+
+        boolean original
+                = cmbOriginal.getSelectedItem().equals("Original");
+
+        boolean fisico
+                = cmbFisico.getSelectedItem().equals("Físico");
+
+        Libro libro = new Libro(
+                titulo,
+                autor,
+                isbn,
+                anio
+        );
 
         libro.setOriginal(original);
         libro.setFisico(fisico);
@@ -242,10 +330,17 @@ public class VentanaNuevoLibro extends javax.swing.JFrame {
         biblioteca.añadirLibro(libro);
         persistencia.guardar(biblioteca);
 
-        
         ventanaPrincipal.cargarTabla();
 
+        javax.swing.JOptionPane.showMessageDialog(
+                this,
+                "El libro \"" + titulo + "\" se ha guardado correctamente.",
+                "Libro guardado",
+                javax.swing.JOptionPane.INFORMATION_MESSAGE
+        );
+
         dispose();
+
 
     }//GEN-LAST:event_btnGuardarActionPerformed
 

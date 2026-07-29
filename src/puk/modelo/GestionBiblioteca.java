@@ -146,4 +146,33 @@ public class GestionBiblioteca {
         libro.setFisico(false);
         return "El libro ha sido establecido como digital";
     }
+
+    public ArrayList<Libro> buscarLibros(String texto) {
+
+        ArrayList<Libro> resultados = new ArrayList<>();
+
+        String busqueda = texto.trim().toLowerCase();
+
+        for (Libro libro : libros) {
+
+            boolean coincideId
+                    = String.valueOf(libro.getId()).equals(busqueda);
+
+            boolean coincideTitulo
+                    = libro.getTitulo()
+                            .toLowerCase()
+                            .contains(busqueda);
+
+            boolean coincideAutor
+                    = libro.getAutor()
+                            .toLowerCase()
+                            .contains(busqueda);
+
+            if (coincideId || coincideTitulo || coincideAutor) {
+                resultados.add(libro);
+            }
+        }
+
+        return resultados;
+    }
 }

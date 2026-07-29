@@ -8,6 +8,7 @@ import puk.modelo.GestionBiblioteca;
 import javax.swing.table.DefaultTableModel;
 import puk.modelo.Libro;
 import puk.persistencia.PersistenciaBiblioteca;
+import java.util.ArrayList;
 
 /**
  *
@@ -39,12 +40,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     public void cargarTabla() {
 
+        cargarLibrosEnTabla(biblioteca.getLibros());
+         actualizarTotalLibros();
+    }
+
+    private void actualizarTotalLibros() {
+
+        lblTotalLibros.setText(
+                "Total de libros: "
+                + biblioteca.getLibros().size()
+        );
+
+    }
+
+    private void cargarLibrosEnTabla(ArrayList<Libro> libros) {
+
         DefaultTableModel modelo
                 = (DefaultTableModel) tablaLibros.getModel();
 
         modelo.setRowCount(0);
 
-        for (Libro libro : biblioteca.getLibros()) {
+        for (Libro libro : libros) {
 
             Object[] fila = {
                 libro.getId(),
@@ -107,8 +123,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         scrollTablaLibros = new javax.swing.JScrollPane();
         tablaLibros = new javax.swing.JTable();
         btnNuevoLibro = new javax.swing.JButton();
-        btnEditarLibro = new javax.swing.JButton();
         btnEliminarLibro = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        lblTotalLibros = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
@@ -134,13 +153,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnEditarLibro.setText("Editar libro");
-        btnEditarLibro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarLibroActionPerformed(evt);
-            }
-        });
-
         btnEliminarLibro.setText("Eliminar libro");
         btnEliminarLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,36 +160,75 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        txtBuscar.setText("Buscar...");
+        txtBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtBuscarMouseClicked(evt);
+            }
+        });
+        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarActionPerformed(evt);
+            }
+        });
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        lblTotalLibros.setText("Total del libros: 0");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTotalLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollTablaLibros, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
+                    .addComponent(scrollTablaLibros)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addComponent(btnNuevoLibro)
-                        .addGap(46, 46, 46)
-                        .addComponent(btnEditarLibro)
-                        .addGap(35, 35, 35)
+                        .addGap(42, 42, 42)
                         .addComponent(btnEliminarLibro)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(36, 36, 36)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLimpiar)
+                        .addContainerGap(16, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTotalLibros))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrollTablaLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevoLibro)
-                    .addComponent(btnEditarLibro)
-                    .addComponent(btnEliminarLibro))
+                    .addComponent(btnEliminarLibro)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar)
+                    .addComponent(btnLimpiar))
                 .addContainerGap(138, Short.MAX_VALUE))
         );
 
@@ -196,21 +247,95 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNuevoLibroActionPerformed
 
     private void btnEliminarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarLibroActionPerformed
-        // TODO add your handling code here:
+        int filaSeleccionada = tablaLibros.getSelectedRow();
+
+        if (filaSeleccionada == -1) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Selecciona un libro de la tabla.",
+                    "Ningún libro seleccionado",
+                    javax.swing.JOptionPane.WARNING_MESSAGE
+            );
+
+            return;
+        }
+
+        int id = Integer.parseInt(
+                tablaLibros.getValueAt(filaSeleccionada, 0).toString()
+        );
+
+        String titulo = tablaLibros
+                .getValueAt(filaSeleccionada, 1)
+                .toString();
+
+        int respuesta = javax.swing.JOptionPane.showConfirmDialog(
+                this,
+                "¿Seguro que deseas eliminar \"" + titulo + "\"?",
+                "Confirmar eliminación",
+                javax.swing.JOptionPane.YES_NO_OPTION,
+                javax.swing.JOptionPane.WARNING_MESSAGE
+        );
+
+        if (respuesta != javax.swing.JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        String mensaje = biblioteca.eliminarLibro(id);
+
+        persistencia.guardar(biblioteca);
+
+        cargarTabla();
+
+        javax.swing.JOptionPane.showMessageDialog(
+                this,
+                mensaje,
+                "Libro eliminado",
+                javax.swing.JOptionPane.INFORMATION_MESSAGE
+        );
     }//GEN-LAST:event_btnEliminarLibroActionPerformed
 
-    private void btnEditarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarLibroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarLibroActionPerformed
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+
+        String texto = txtBuscar.getText().trim();
+
+        if (texto.isEmpty()) {
+            cargarTabla();
+            return;
+        }
+
+        cargarLibrosEnTabla(
+                biblioteca.buscarLibros(texto)
+        );
+
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void txtBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBuscarMouseClicked
+        if (txtBuscar.getText().equals("Buscar...")) {
+            txtBuscar.setText("");
+        }
+    }//GEN-LAST:event_txtBuscarMouseClicked
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        txtBuscar.setText("Buscar...");
+        cargarTabla();
+
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
+        btnBuscar.doClick();
+    }//GEN-LAST:event_txtBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditarLibro;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminarLibro;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnNuevoLibro;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTotalLibros;
     private javax.swing.JScrollPane scrollTablaLibros;
     private javax.swing.JTable tablaLibros;
+    private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

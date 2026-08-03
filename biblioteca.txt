@@ -1,7 +1,10 @@
-1;Mort;Terry Pratchett;9788497592475;1987;true;true
-2;El imperio final;Brandon Sanderson;9788498726138;2006;true;true
-3;El Hobbit;J. R. R. Tolkien;9788445073803;1937;true;true
-4;Prueba;Prueba;Prueba;1568;false;false
-5;dsf;fdssdf;5984;1748;true;true
-6;dsfsdfs;Sanderson;fsdfsdfsd;1569;true;true
-7;dsfsd;fsdfsd;fsdfsfsd;1658;true;true
+1;Nación;Terry Pratchett;9788448038380;2010;true;true
+2;Nuevos casos de los detectives López y Baldosillo;Pedro Soria FernándezMayoralas;8426319165;1990;true;true
+La edad de la ira;Nando López;9788467040593;2011;true;true
+Avatar: The Last Airbender – The Legacy of Yangchen;F. C. Yee;9781419751189;2023;true;true
+Avatar: The Last Airbender – The Dawn of Yangchen;F. C. Yee;9781419750472;2022;true;true
+Avatar: The Last Airbender – The Rise of Kyoshi;F. C. Yee;9781419735042;2019;true;true
+The Robber Bride;Margaret Atwood;9781853817229;1993;true;true
+Finis Mundi;Laura Gallego García;9788467595291;1999;true;true
+Reflejo y sombra;Virginia Vic Mirón;9788419435040;2022;true;true
+Avatar the last airbender: The lost adventures;Bryan Konietzko & Michael Dante Dimartino;9781595827487;2011;true;true

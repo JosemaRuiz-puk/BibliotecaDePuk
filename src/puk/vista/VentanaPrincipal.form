@@ -140,7 +140,7 @@
                 <Column editable="true" title="T&#xed;tulo" type="java.lang.Object"/>
                 <Column editable="true" title="Autor" type="java.lang.Object"/>
                 <Column editable="true" title="ISBN" type="java.lang.Object"/>
-                <Column editable="true" title="A&#xf1;o publicaci&#xf3;n" type="java.lang.Object"/>
+                <Column editable="true" title="A&#xf1;o edici&#xf3;n" type="java.lang.Object"/>
                 <Column editable="true" title="Original" type="java.lang.Object"/>
                 <Column editable="true" title="Formato" type="java.lang.Object"/>
               </Table>

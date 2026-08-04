@@ -149,7 +149,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 libro.getTitulo(),
                 libro.getAutor(),
                 libro.getIsbn(),
-                libro.getAnioPublicacion(),
+                libro.getAnioEdicion(),
                 libro.isOriginal() ? "Original" : "Fotocopia",
                 libro.isFisico() ? "Físico" : "Digital"
             };
@@ -177,7 +177,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     "Título",
                     "Autor",
                     "ISBN",
-                    "Año publicación",
+                    "Año edición",
                     "Original",
                     "Formato"
                 }
@@ -274,7 +274,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Título", "Autor", "ISBN", "Año publicación", "Original", "Formato"
+                "ID", "Título", "Autor", "ISBN", "Año edición", "Original", "Formato"
             }
         ));
         scrollTablaLibros.setViewportView(tablaLibros);

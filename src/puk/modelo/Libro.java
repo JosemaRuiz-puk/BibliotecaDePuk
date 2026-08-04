@@ -15,15 +15,21 @@ public class Libro {
     private String autor;
     private String isbn;
     private int anioPublicacion;
+    private int anioEdicion;
     private boolean original;
     private boolean fisico;
     private static int contador = 1;
+    
+    public static void reiniciarContador() {
+    contador = 1;
+}
 
-    public Libro(String titulo, String autor, String isbn, int anioPublicacion) {
+    public Libro(String titulo, String autor, String isbn, int anioPublicacion, int anioEdicion) {
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = isbn;
         this.anioPublicacion = anioPublicacion;
+        this.anioEdicion = anioEdicion;
         this.id = contador;
         contador++;
         this.original = true;
@@ -31,13 +37,14 @@ public class Libro {
     }
 
     public Libro(int id, String titulo, String autor, String isbn,
-            int anioPublicacion, boolean original, boolean fisico) {
+            int anioPublicacion, int anioEdicion, boolean original, boolean fisico) {
 
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = isbn;
         this.anioPublicacion = anioPublicacion;
+        this.anioEdicion = anioEdicion;
         this.original = original;
         this.fisico = fisico;
 
@@ -66,6 +73,10 @@ public class Libro {
         return anioPublicacion;
     }
 
+    public int getAnioEdicion() {
+        return anioEdicion;
+    }
+
     public boolean isOriginal() {
         return original;
     }
@@ -92,6 +103,7 @@ public class Libro {
                 + "\nAutor: " + autor
                 + "\nISBN: " + isbn
                 + "\nAño de publicación: " + anioPublicacion
+                + "\nAño de la edición: " + anioEdicion
                 + "\nFormato(original): " + fotocopiado
                 + "\nFormato(soporte): " + digital;
     }

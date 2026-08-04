@@ -27,6 +27,8 @@ public class PersistenciaBiblioteca {
     }
 
     public GestionBiblioteca cargar() {
+        
+        Libro.reiniciarContador();
 
         GestionBiblioteca biblioteca = new GestionBiblioteca();
 
@@ -34,27 +36,33 @@ public class PersistenciaBiblioteca {
             return biblioteca;
         }
 
-        try (BufferedReader lector = Files.newBufferedReader(rutaArchivo)) {
+        try (BufferedReader lector = Files.newBufferedReader(
+                rutaArchivo,
+                StandardCharsets.UTF_8)) {
 
             String linea;
 
             while ((linea = lector.readLine()) != null) {
-                String[] datos = linea.split(";");
-                //Reconstruir el dato con las lineas del archivo
 
+                if (linea.isBlank()) {
+                    continue;
+                }
+
+                String[] datos = linea.split(";");
                 Libro libro;
 
-                if (datos.length == 7) {
+                if (datos.length == 8) {
 
                     // Formato normal con ID:
-                    // id;titulo;autor;isbn;anio;original;fisico
+                    // id;titulo;autor;isbn;anioPublicacion;anioEdicion;original;fisico
                     int id = Integer.parseInt(datos[0]);
                     String titulo = datos[1];
                     String autor = datos[2];
                     String isbn = datos[3];
                     int anioPublicacion = Integer.parseInt(datos[4]);
-                    boolean original = Boolean.parseBoolean(datos[5]);
-                    boolean fisico = Boolean.parseBoolean(datos[6]);
+                    int anioEdicion = Integer.parseInt(datos[5]);
+                    boolean original = Boolean.parseBoolean(datos[6]);
+                    boolean fisico = Boolean.parseBoolean(datos[7]);
 
                     libro = new Libro(
                             id,
@@ -62,30 +70,51 @@ public class PersistenciaBiblioteca {
                             autor,
                             isbn,
                             anioPublicacion,
+                            anioEdicion,
                             original,
                             fisico
                     );
 
-                } else if (datos.length == 6) {
+                } else if (datos.length == 7) {
 
-                    // Formato de importación inicial sin ID:
-                    // titulo;autor;isbn;anio;original;fisico
+                    // Formato de importación sin ID:
+                    // titulo;autor;isbn;anioPublicacion;anioEdicion;original;fisico
                     String titulo = datos[0];
                     String autor = datos[1];
                     String isbn = datos[2];
                     int anioPublicacion = Integer.parseInt(datos[3]);
-                    boolean original = Boolean.parseBoolean(datos[4]);
-                    boolean fisico = Boolean.parseBoolean(datos[5]);
+                    int anioEdicion = Integer.parseInt(datos[4]);
+                    boolean original = Boolean.parseBoolean(datos[5]);
+                    boolean fisico = Boolean.parseBoolean(datos[6]);
 
                     libro = new Libro(
                             titulo,
                             autor,
                             isbn,
-                            anioPublicacion
+                            anioPublicacion,
+                            anioEdicion
                     );
 
                     libro.setOriginal(original);
                     libro.setFisico(fisico);
+
+                } else if (datos.length == 5) {
+
+                    // Formato de importación simplificado:
+                    // titulo;autor;isbn;anioPublicacion;anioEdicion
+                    String titulo = datos[0];
+                    String autor = datos[1];
+                    String isbn = datos[2];
+                    int anioPublicacion = Integer.parseInt(datos[3]);
+                    int anioEdicion = Integer.parseInt(datos[4]);
+
+                    libro = new Libro(
+                            titulo,
+                            autor,
+                            isbn,
+                            anioPublicacion,
+                            anioEdicion
+                    );
 
                 } else {
 
@@ -94,18 +123,25 @@ public class PersistenciaBiblioteca {
                 }
 
                 biblioteca.añadirLibro(libro);
-
             }
 
-        } catch (IOException e) {
+        } catch (IOException | NumberFormatException e) {
             System.out.println("Error al cargar la biblioteca.");
+            e.printStackTrace();
         }
 
         System.out.println("=== CARGAR ===");
-        System.out.println("Total libros cargados: " + biblioteca.getTotalLibros());
+        System.out.println(
+                "Total libros cargados: "
+                + biblioteca.getTotalLibros()
+        );
 
         for (Libro libro : biblioteca.getLibros()) {
-            System.out.println(libro.getId() + " - " + libro.getTitulo());
+            System.out.println(
+                    libro.getId()
+                    + " - "
+                    + libro.getTitulo()
+            );
         }
 
         return biblioteca;
@@ -133,6 +169,7 @@ public class PersistenciaBiblioteca {
                         + libro.getAutor() + ";"
                         + libro.getIsbn() + ";"
                         + libro.getAnioPublicacion() + ";"
+                        + libro.getAnioEdicion() + ";"
                         + libro.isOriginal() + ";"
                         + libro.isFisico()
                 );

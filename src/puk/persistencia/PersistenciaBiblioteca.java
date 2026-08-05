@@ -27,10 +27,11 @@ public class PersistenciaBiblioteca {
     }
 
     public GestionBiblioteca cargar() {
-        
+
         Libro.reiniciarContador();
 
         GestionBiblioteca biblioteca = new GestionBiblioteca();
+        boolean hayLibrosSinId = false;
 
         if (!Files.exists(rutaArchivo)) {
             return biblioteca;
@@ -48,7 +49,7 @@ public class PersistenciaBiblioteca {
                     continue;
                 }
 
-                String[] datos = linea.split(";");
+                String[] datos = linea.split(";",-1);
                 Libro libro;
 
                 if (datos.length == 8) {
@@ -98,6 +99,8 @@ public class PersistenciaBiblioteca {
                     libro.setOriginal(original);
                     libro.setFisico(fisico);
 
+                    hayLibrosSinId = true;
+
                 } else if (datos.length == 5) {
 
                     // Formato de importación simplificado:
@@ -116,6 +119,8 @@ public class PersistenciaBiblioteca {
                             anioEdicion
                     );
 
+                    hayLibrosSinId = true;
+
                 } else {
 
                     System.out.println("Línea incorrecta: " + linea);
@@ -129,7 +134,11 @@ public class PersistenciaBiblioteca {
             System.out.println("Error al cargar la biblioteca.");
             e.printStackTrace();
         }
-
+        
+        if (hayLibrosSinId) {
+            guardar(biblioteca);
+        }
+        
         System.out.println("=== CARGAR ===");
         System.out.println(
                 "Total libros cargados: "

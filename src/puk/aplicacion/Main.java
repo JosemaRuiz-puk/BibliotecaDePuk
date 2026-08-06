@@ -7,18 +7,14 @@ package puk.aplicacion;
 import puk.modelo.GestionBiblioteca;
 import puk.persistencia.PersistenciaBiblioteca;
 import puk.vista.VentanaPrincipal;
+import puk.vista.VentanaCarga;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        PersistenciaBiblioteca persistencia
-                = new PersistenciaBiblioteca("biblioteca.txt");
-
-        GestionBiblioteca biblioteca = persistencia.cargar();
-
         java.awt.EventQueue.invokeLater(() -> {
-            new VentanaPrincipal(biblioteca,persistencia).setVisible(true);
+            new VentanaCarga().setVisible(true);
         });
 
     }

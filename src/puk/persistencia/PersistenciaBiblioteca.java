@@ -34,9 +34,19 @@ public class PersistenciaBiblioteca {
         boolean hayLibrosSinId = false;
 
         if (!Files.exists(rutaArchivo)) {
+            try {
+                Files.createFile(rutaArchivo);
+                System.out.println(
+                        "Archivo creado: "
+                        + rutaArchivo.toAbsolutePath()
+                );
+            } catch (IOException e) {
+                System.out.println("No se pudo crear biblioteca.txt");
+                e.printStackTrace();
+            }
+
             return biblioteca;
         }
-
         try (BufferedReader lector = Files.newBufferedReader(
                 rutaArchivo,
                 StandardCharsets.UTF_8)) {
@@ -49,7 +59,7 @@ public class PersistenciaBiblioteca {
                     continue;
                 }
 
-                String[] datos = linea.split(";",-1);
+                String[] datos = linea.split(";", -1);
                 Libro libro;
 
                 if (datos.length == 8) {
@@ -134,11 +144,11 @@ public class PersistenciaBiblioteca {
             System.out.println("Error al cargar la biblioteca.");
             e.printStackTrace();
         }
-        
+
         if (hayLibrosSinId) {
             guardar(biblioteca);
         }
-        
+
         System.out.println("=== CARGAR ===");
         System.out.println(
                 "Total libros cargados: "

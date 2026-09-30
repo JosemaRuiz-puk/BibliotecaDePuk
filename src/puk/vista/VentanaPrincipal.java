@@ -33,6 +33,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         initComponents();
 
+        btnEditarLibro.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+                    btnEditarLibro.doClick();
+                }
+            }
+        });
+       
         getContentPane().setBackground(
                 new java.awt.Color(245, 241, 232)
         );
@@ -149,7 +158,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 libro.getTitulo(),
                 libro.getAutor(),
                 libro.getIsbn(),
-                libro.getAnioEdicion(),
+                libro.getIdioma(),
                 libro.isOriginal() ? "Original" : "Fotocopia",
                 libro.isFisico() ? "Físico" : "Digital"
             };
@@ -177,7 +186,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     "Título",
                     "Autor",
                     "ISBN",
-                    "Año edición",
+                    "Idioma",
                     "Original",
                     "Formato"
                 }

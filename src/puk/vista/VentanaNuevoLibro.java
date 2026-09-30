@@ -22,6 +22,8 @@ public class VentanaNuevoLibro extends javax.swing.JFrame {
             VentanaPrincipal ventanaPrincipal) {
 
         initComponents();
+        
+        getRootPane().setDefaultButton(btnGuardar);
 
         this.biblioteca = biblioteca;
         this.persistencia = persistencia;
@@ -64,6 +66,8 @@ public class VentanaNuevoLibro extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         lblEdicion = new javax.swing.JLabel();
         txtEdicion = new javax.swing.JTextField();
+        lblIdioma = new javax.swing.JLabel();
+        txtIdioma = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nuevo libro");
@@ -144,6 +148,8 @@ public class VentanaNuevoLibro extends javax.swing.JFrame {
             }
         });
 
+        lblIdioma.setText("Idioma");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,10 +158,6 @@ public class VentanaNuevoLibro extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnGuardar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCancelar))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -186,7 +188,16 @@ public class VentanaNuevoLibro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cmbFisico, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEdicion, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtEdicion, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(lblIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtIdioma))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(btnGuardar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnCancelar))))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
@@ -221,11 +232,15 @@ public class VentanaNuevoLibro extends javax.swing.JFrame {
                     .addComponent(cmbFisico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblIdioma)
+                    .addComponent(txtIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnGuardar))
-                .addContainerGap(238, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar)
+                    .addComponent(btnCancelar))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtAnio, txtEdicion});
@@ -257,13 +272,13 @@ public class VentanaNuevoLibro extends javax.swing.JFrame {
         String isbn = txtIsbn.getText().trim();
         String textoAnio = txtAnio.getText().trim();
         String textoEdicion = txtEdicion.getText().trim();
+        String idioma = txtIdioma.getText().trim();
 
         // Comprobar campos vacíos
         if (titulo.isEmpty()
                 || autor.isEmpty()
-                || isbn.isEmpty()
                 || textoAnio.isEmpty()
-                || textoEdicion.isEmpty()) {
+                || idioma.isEmpty()) {
 
             javax.swing.JOptionPane.showMessageDialog(
                     this,
@@ -276,7 +291,7 @@ public class VentanaNuevoLibro extends javax.swing.JFrame {
         }
 
         // Comprobar ISBN
-        if (!ValidadorISBN.esValido(isbn)) {
+        if (!isbn.isEmpty() && !ValidadorISBN.esValido(isbn)) {
 
             JOptionPane.showMessageDialog(
                     this,
@@ -288,12 +303,17 @@ public class VentanaNuevoLibro extends javax.swing.JFrame {
             return;
         }
 
-        isbn = ValidadorISBN.limpiar(isbn);
+        if (!isbn.isEmpty()) {
+            isbn = ValidadorISBN.limpiar(isbn);
+        } else {
+            isbn = "SIN ISBN";
+        }
 
         // Evitar que se rompa el formato del fichero
         if (titulo.contains(";")
                 || autor.contains(";")
-                || isbn.contains(";")) {
+                || isbn.contains(";")
+                || idioma.contains(";")) {
 
             javax.swing.JOptionPane.showMessageDialog(
                     this,
@@ -311,7 +331,11 @@ public class VentanaNuevoLibro extends javax.swing.JFrame {
 
         try {
             anioPublicacion = Integer.parseInt(textoAnio);
-            anioEdicion = Integer.parseInt(textoEdicion);
+            if (textoEdicion.isEmpty()) {
+                anioEdicion = anioPublicacion;
+            } else {
+                anioEdicion = Integer.parseInt(textoEdicion);
+            }
 
         } catch (NumberFormatException e) {
 
@@ -368,7 +392,8 @@ public class VentanaNuevoLibro extends javax.swing.JFrame {
                 autor,
                 isbn,
                 anioPublicacion,
-                anioEdicion
+                anioEdicion,
+                idioma
         );
 
         libro.setOriginal(original);
@@ -418,9 +443,11 @@ public class VentanaNuevoLibro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel lblEdicion;
+    private javax.swing.JLabel lblIdioma;
     private javax.swing.JTextField txtAnio;
     private javax.swing.JTextField txtAutor;
     private javax.swing.JTextField txtEdicion;
+    private javax.swing.JTextField txtIdioma;
     private javax.swing.JTextField txtIsbn;
     private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables

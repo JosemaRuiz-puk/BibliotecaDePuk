@@ -1,49 +1,49 @@
-1;Nación;Terry Pratchett;9788448038380;2009;2010;true;true
-2;Nuevos casos de los detectives López y Baldosillo;Pedro Soria FernándezMayoralas;8426319165;1990;1990;true;true
-3;La edad de la ira;Nando López;9788467040593;2011;2021;true;true
-4;Avatar: The Last Airbender – The Legacy of Yangchen;F. C. Yee;9781419751189;2023;2023;true;true
-5;Avatar: The Last Airbender – The Dawn of Yangchen;F. C. Yee;9781419750472;2022;2022;true;true
-6;Avatar: The Last Airbender – The Rise of Kyoshi;F. C. Yee;9781419735042;2019;2019;true;true
-7;The Robber Bride;Margaret Atwood;9781853817229;1993;2020;true;true
-8;Finis Mundi;Laura Gallego García;9788467595291;1999;2013;true;true
-9;Reflejo y sombra;Virginia Vic Mirón;9788419435040;2022;2022;true;true
-10;Avatar the last airbender: The lost adventures;Bryan Konietzko & Michael Dante Dimartino;9781595827487;2011;2011;true;true
-11;El color de la magia;Terry Pratchett;9788497596794;1983;2021;true;true
-12;La luz fantástica;Terry Pratchett;9788497931786;1986;2021;true;true
-13;Ritos iguales;Terry Pratchett;9788497930208;1987;2016;true;true
-14;Mort;Terry Pratchett;9788497931779;1987;2014;true;true
-15;¡Guardias! ¿Guardias?;Terry Pratchett;9788497931762;1989;2015;true;true
-16;Pirómides;Terry Pratchett;9788497931755;1989;2015;true;true
-17;Brujeras;Terry Pratchett;9788497931793;1988;2017;true;true
-18;Dioses menores;Terry Pratchett;9788497931748;1992;2014;true;true
-19;Imágenes en acción;Terry Pratchett;9788497931731;1990;2015;true;true
-20;El segador;Terry Pratchett;9788497931724;1991;2012;true;true
-21;Brujas de viaje;Terry Pratchett;9788497932134;1991;2017;true;true
-22;Lores y damas;Terry Pratchett;9788497934725;1992;2017;true;true
-23;Hombres de armas;Terry Pratchett;9788497936231;1993;2015;true;true
-24;Soul Music;Terry Pratchett;9788497937634;1994;2011;true;true
-25;Mascarada;Terry Pratchett;9788497939799;1995;2019;true;true
-26;Pies de barro;Terry Pratchett;9788497939805;1996;2015;true;true
-27;¡Voto a bríos!;Terry Pratchett;9788483468401;1997;2015;true;true
-28;Carpe Jugulum;Terry Pratchett;9788499080024;1998;2019;true;true
-29;El quinto elefante;Terry Pratchett;9788499081359;1999;2015;true;true
-30;La verdad;Terry Pratchett;9788499081366;2000;2015;true;true
-31;Ladrón del tiempo;Terry Pratchett;9788499087030;2001;2011;true;true
-32;Ronda de noche;Terry Pratchett;9788499893655;2002;2015;true;true
-33;Regimiento monstruoso;Terry Pratchett;9788499893662;2003;2018;true;true
-34;El asombroso Mauricio y sus roedores sabios;Terry Pratchett;9788499894744;2001;2015;true;true
-35;Cartas en el asunto;Terry Pratchett;9788499898810;2004;2015;true;true
-36;Dinero a mansalva;Terry Pratchett;9788499895338;2007;2013;true;true
-37;¡Zas!;Terry Pratchett;9788499895345;2005;2013;true;true
-38;Un sombrero de cielo;Terry Pratchett;9788490325148;2004;2019;true;true
-39;El atlético invisible;Terry Pratchett;9788490326312;2008;2014;true;true
-40;Snuff;Terry Pratchett;978849063862;2011;2015;true;true
-41;A todo vapor;Terry Pratchett;9788466341653;2013;2017;true;true
-42;Los pequeños hombres libres;Terry Pratchett;9788466341134;2003;2019;true;true
-43;Papá Puerco;Terry Pratchett;9788483467688;1996;2014;true;true
-44;Good Omens;Neil Gaiman y Terry Pratchett;9780060853983;1990;2006;true;true
-45;Buenos Presagios;Neil Gaiman y Terry Pratchett;9788448006983;1990;2009;true;true
-46;Terry Pratchett: una vida con notas al pie;Rob Wilkins;9788412493078;2022;2022;true;true
-47;Only You Can Save Mankind;Terry Pratchett;9780552551038;1992;2013;true;true
-48;Johnny and the Dead;Terry Pratchett;9780552551069;1993;2013;true;true
-49;Johnny and the Bomb;Terry Pratchett;9780552551045;1996;2013;true;true
+1;Nación;Terry Pratchett;9788448038380;2009;2010;Sin especificar;true;true
+2;Nuevos casos de los detectives López y Baldosillo;Pedro Soria FernándezMayoralas;8426319165;1990;1990;Sin especificar;true;true
+3;La edad de la ira;Nando López;9788467040593;2011;2021;Sin especificar;true;true
+4;Avatar: The Last Airbender – The Legacy of Yangchen;F. C. Yee;9781419751189;2023;2023;Sin especificar;true;true
+5;Avatar: The Last Airbender – The Dawn of Yangchen;F. C. Yee;9781419750472;2022;2022;Sin especificar;true;true
+6;Avatar: The Last Airbender – The Rise of Kyoshi;F. C. Yee;9781419735042;2019;2019;Sin especificar;true;true
+7;The Robber Bride;Margaret Atwood;9781853817229;1993;2020;Sin especificar;true;true
+8;Finis Mundi;Laura Gallego García;9788467595291;1999;2013;Sin especificar;true;true
+9;Reflejo y sombra;Virginia Vic Mirón;9788419435040;2022;2022;Sin especificar;true;true
+10;Avatar the last airbender: The lost adventures;Bryan Konietzko & Michael Dante Dimartino;9781595827487;2011;2011;Sin especificar;true;true
+11;El color de la magia;Terry Pratchett;9788497596794;1983;2021;Sin especificar;true;true
+12;La luz fantástica;Terry Pratchett;9788497931786;1986;2021;Sin especificar;true;true
+13;Ritos iguales;Terry Pratchett;9788497930208;1987;2016;Sin especificar;true;true
+14;Mort;Terry Pratchett;9788497931779;1987;2014;Sin especificar;true;true
+15;¡Guardias! ¿Guardias?;Terry Pratchett;9788497931762;1989;2015;Sin especificar;true;true
+16;Pirómides;Terry Pratchett;9788497931755;1989;2015;Sin especificar;true;true
+17;Brujeras;Terry Pratchett;9788497931793;1988;2017;Sin especificar;true;true
+18;Dioses menores;Terry Pratchett;9788497931748;1992;2014;Sin especificar;true;true
+19;Imágenes en acción;Terry Pratchett;9788497931731;1990;2015;Sin especificar;true;true
+20;El segador;Terry Pratchett;9788497931724;1991;2012;Sin especificar;true;true
+21;Brujas de viaje;Terry Pratchett;9788497932134;1991;2017;Sin especificar;true;true
+22;Lores y damas;Terry Pratchett;9788497934725;1992;2017;Sin especificar;true;true
+23;Hombres de armas;Terry Pratchett;9788497936231;1993;2015;Sin especificar;true;true
+24;Soul Music;Terry Pratchett;9788497937634;1994;2011;Sin especificar;true;true
+25;Mascarada;Terry Pratchett;9788497939799;1995;2019;Sin especificar;true;true
+26;Pies de barro;Terry Pratchett;9788497939805;1996;2015;Sin especificar;true;true
+27;¡Voto a bríos!;Terry Pratchett;9788483468401;1997;2015;Sin especificar;true;true
+28;Carpe Jugulum;Terry Pratchett;9788499080024;1998;2019;Sin especificar;true;true
+29;El quinto elefante;Terry Pratchett;9788499081359;1999;2015;Sin especificar;true;true
+30;La verdad;Terry Pratchett;9788499081366;2000;2015;Sin especificar;true;true
+31;Ladrón del tiempo;Terry Pratchett;9788499087030;2001;2011;Sin especificar;true;true
+32;Ronda de noche;Terry Pratchett;9788499893655;2002;2015;Sin especificar;true;true
+33;Regimiento monstruoso;Terry Pratchett;9788499893662;2003;2018;Sin especificar;true;true
+34;El asombroso Mauricio y sus roedores sabios;Terry Pratchett;9788499894744;2001;2015;Sin especificar;true;true
+35;Cartas en el asunto;Terry Pratchett;9788499898810;2004;2015;Sin especificar;true;true
+36;Dinero a mansalva;Terry Pratchett;9788499895338;2007;2013;Sin especificar;true;true
+37;¡Zas!;Terry Pratchett;9788499895345;2005;2013;Sin especificar;true;true
+38;Un sombrero de cielo;Terry Pratchett;9788490325148;2004;2019;Sin especificar;true;true
+39;El atlético invisible;Terry Pratchett;9788490326312;2008;2014;Sin especificar;true;true
+40;Snuff;Terry Pratchett;978849063862;2011;2015;Sin especificar;true;true
+41;A todo vapor;Terry Pratchett;9788466341653;2013;2017;Sin especificar;true;true
+42;Los pequeños hombres libres;Terry Pratchett;9788466341134;2003;2019;Sin especificar;true;true
+43;Papá Puerco;Terry Pratchett;9788483467688;1996;2014;Sin especificar;true;true
+44;Good Omens;Neil Gaiman y Terry Pratchett;9780060853983;1990;2006;Sin especificar;true;true
+45;Buenos Presagios;Neil Gaiman y Terry Pratchett;9788448006983;1990;2009;Sin especificar;true;true
+46;Terry Pratchett: una vida con notas al pie;Rob Wilkins;9788412493078;2022;2022;Sin especificar;true;true
+47;Only You Can Save Mankind;Terry Pratchett;9780552551038;1992;2013;Sin especificar;true;true
+48;Johnny and the Dead;Terry Pratchett;9780552551069;1993;2013;Sin especificar;true;true
+49;Johnny and the Bomb;Terry Pratchett;9780552551045;1996;2013;Sin especificar;true;true

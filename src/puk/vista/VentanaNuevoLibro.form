@@ -32,11 +32,6 @@
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel1" min="-2" pref="148" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="jLabel4" min="-2" pref="37" max="-2" attributes="0"/>
@@ -75,6 +70,18 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="cmbFisico" min="-2" pref="73" max="-2" attributes="0"/>
                           <Component id="txtEdicion" linkSize="1" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblIdioma" min="-2" pref="47" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtIdioma" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -116,12 +123,17 @@
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnCancelar" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblIdioma" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtIdioma" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="238" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="203" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -243,6 +255,13 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEdicionActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblIdioma">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Idioma"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtIdioma">
     </Component>
   </SubComponents>
 </Form>
